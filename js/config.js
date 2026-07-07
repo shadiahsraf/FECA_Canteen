@@ -30,9 +30,9 @@ const CONFIG = {
   // Defaults below are the hashes of the words "seller" and "admin".
   // CHANGE THESE before going live — see instructions above.
   SELLER_PASSWORD_HASH: ENV.SELLER_PASSWORD_HASH ||
-    '9c4eab62f28c528b6420d9075ac2f7b1b9086f45fdcb3dc04a7b2425953e74c9', // "seller"
+    'dd847ad1c171a96b58b40b845630eac6aa719d6767e6659f41ee554ce8ccdf33', // "seller"
   ADMIN_PASSWORD_HASH:  ENV.ADMIN_PASSWORD_HASH ||
-    'fb7f28df19b3d76e788b9a0731e916e7cc1691e5723028d3520d385330b1767c', // "admin"
+    'f986bf123367958876643b780d64b09a4046ba1de06fe3239b2db1f4993407f2', // "admin"
 
   // ---- Branding --------------------------------------------------------------
   CHURCH_NAME_AR: 'الكنيسة الإنجيلية الأولى في أسيوط',
