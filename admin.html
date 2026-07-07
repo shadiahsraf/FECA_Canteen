@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Admin · Canteen</title>
+  <meta name="theme-color" content="#fbfaf6" />
+  <link rel="icon" href="assets/emblem.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__emblem" aria-hidden="true">
+        <svg viewBox="0 0 240 200" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 78 L64 40 L88 78 M46 78 L46 150 M82 78 L82 150"/>
+          <path d="M152 78 L176 40 L200 78 M158 78 L158 150 M194 78 L194 150"/>
+          <path d="M96 150 L96 92 q24 -30 48 0 L144 150"/><path d="M120 62 L120 46 M113 54 L127 54" stroke-width="5"/>
+          <path d="M120 108 L120 148 M106 122 L134 122" stroke-width="8"/>
+          <path d="M28 160 q92 -22 92 8 q0 -30 92 -8 L212 172 q-92 -20 -92 6 q0 -26 -92 -6 Z" stroke-width="5"/>
+        </svg>
+      </span>
+      <div class="topbar__titles">
+        <div class="name" data-brand-ar>الكنيسة الإنجيلية الأولى في أسيوط</div>
+        <div class="sub">Canteen · Administration</div>
+      </div>
+    </div>
+    <div class="topbar__spacer"></div>
+    <nav class="topbar__nav">
+      <a class="navlink" href="seller.html">POS</a>
+      <a class="navlink is-active" href="admin.html">Admin</a>
+      <button class="navlink" id="logout-btn" type="button">Sign out</button>
+    </nav>
+  </header>
+
+  <!-- Gate shown until admin password verified -->
+  <div class="admin__gate" id="gate" hidden>
+    <div>
+      <span class="eyebrow">Restricted</span>
+      <h1 class="page-head" style="font-family:var(--f-display);font-size:2.2rem">Admin verification required</h1>
+      <button class="btn btn--gold" id="gate-btn" type="button">Enter admin password</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <main class="admin" id="dashboard" hidden>
+    <div class="page-head">
+      <span class="eyebrow">Overview</span>
+      <h1>The Ledger</h1>
+    </div>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="panels">
+      <div class="panel">
+        <h3>Sales · last 14 days</h3>
+        <div class="panel__chart"><canvas id="chart-daily"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Top sellers</h3>
+        <div class="panel__chart"><canvas id="chart-top"></canvas></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h3>Products</h3>
+        <button class="btn btn--gold btn--sm" id="add-product-btn" type="button">+ Add product</button>
+      </div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="data" id="products-table">
+            <thead><tr>
+              <th></th><th>Name</th><th>Code</th><th>Category</th>
+              <th class="num">Price</th><th class="num">Stock</th><th class="num">Actions</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h3>Sales history</h3></div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="data" id="sales-table">
+            <thead><tr>
+              <th>Order</th><th>Date &amp; time</th><th>Items</th><th>Seller</th><th class="num">Total</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="js/env.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/cloudinary.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

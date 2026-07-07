@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>POS · Canteen</title>
+  <meta name="theme-color" content="#fbfaf6" />
+  <link rel="icon" href="assets/emblem.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__emblem" aria-hidden="true">
+        <svg viewBox="0 0 240 200" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 78 L64 40 L88 78 M46 78 L46 150 M82 78 L82 150"/>
+          <path d="M152 78 L176 40 L200 78 M158 78 L158 150 M194 78 L194 150"/>
+          <path d="M96 150 L96 92 q24 -30 48 0 L144 150"/><path d="M120 62 L120 46 M113 54 L127 54" stroke-width="5"/>
+          <path d="M120 108 L120 148 M106 122 L134 122" stroke-width="8"/>
+          <path d="M28 160 q92 -22 92 8 q0 -30 92 -8 L212 172 q-92 -20 -92 6 q0 -26 -92 -6 Z" stroke-width="5"/>
+        </svg>
+      </span>
+      <div class="topbar__titles">
+        <div class="name" data-brand-ar>الكنيسة الإنجيلية الأولى في أسيوط</div>
+        <div class="sub">Canteen · Point of Sale</div>
+      </div>
+    </div>
+    <div class="topbar__spacer"></div>
+    <nav class="topbar__nav">
+      <a class="navlink is-active" href="seller.html">POS</a>
+      <a class="navlink" href="admin.html"><span>Admin</span></a>
+      <button class="navlink" id="logout-btn" type="button">Sign out</button>
+    </nav>
+  </header>
+
+  <!-- POS layout -->
+  <div class="pos">
+    <section class="pos__main">
+      <div class="pos__toolbar">
+        <div class="search">
+          <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input class="field" id="search" type="search" placeholder="Search products or code…" aria-label="Search products" />
+        </div>
+      </div>
+      <div class="cat-filter" id="cat-filter"></div>
+      <div class="grid" id="grid" style="margin-top:16px"></div>
+    </section>
+
+    <!-- Cart -->
+    <aside class="cart" id="cart" aria-label="Cart">
+      <div class="cart__grab" aria-hidden="true"></div>
+      <button class="btn btn--icon btn--ghost cart__close" id="cart-close" type="button" aria-label="Close cart">✕</button>
+      <div class="cart__head">
+        <span class="eyebrow">Current order</span>
+        <h2>The Tray</h2>
+      </div>
+      <div class="cart__items" id="cart-items">
+        <p class="cart__empty">No items yet. Tap a product to begin.</p>
+      </div>
+      <div class="cart__foot">
+        <div class="cart__total">
+          <span class="lbl2">Total</span>
+          <span class="val" id="cart-total">0.00 EGP</span>
+        </div>
+        <div class="cart__actions">
+          <button class="btn btn--ghost" id="cart-clear" type="button" aria-label="Clear cart">Clear</button>
+          <button class="btn btn--gold" id="checkout-btn" type="button">Complete sale</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Mobile cart button -->
+  <button class="cart-fab" id="cart-fab" type="button">
+    <span class="cart-fab__count" id="fab-count">0</span>
+    <span>View tray</span>
+    <span class="cart-fab__total" id="fab-total">0.00</span>
+  </button>
+
+  <!-- Hidden print target for invoices -->
+  <div id="print-area" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/env.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/cloudinary.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/seller.js"></script>
+</body>
+</html>
