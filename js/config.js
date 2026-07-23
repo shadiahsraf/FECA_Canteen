@@ -18,8 +18,8 @@ const ENV = (typeof window !== 'undefined' && window.ENV) ? window.ENV : {};
 
 const CONFIG = {
   // ---- Supabase --------------------------------------------------------------
-  SUPABASE_URL:      ENV.SUPABASE_URL      || 'https://zmomklqdnaonszqwkfwf.supabase.co',
-  SUPABASE_ANON_KEY: ENV.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inptb21rbHFkbmFvbnN6cXdrZndmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjgxNzQsImV4cCI6MjA5OTAwNDE3NH0.BmcwL5mu5MUatm0wQBog4c5h_r8g3DqPcqraai0_Pzo',
+  SUPABASE_URL:      ENV.SUPABASE_URL      || 'https://wpptktcfimzfllwuidqa.supabase.co',
+  SUPABASE_ANON_KEY: ENV.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwcHRrdGNmaW16Zmxsd3VpZHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4MTI0NTgsImV4cCI6MjEwMDM4ODQ1OH0.siK63OMJV4_B-luyvx6QZjkplXz5dzKpFmoGrbcfikA',
 
   // ---- Cloudinary (unsigned upload) -----------------------------------------
   CLOUDINARY_CLOUD_NAME:    ENV.CLOUDINARY_CLOUD_NAME    || 's3cl66qq',
@@ -39,7 +39,11 @@ const CONFIG = {
   CHURCH_NAME_EN: 'First Evangelical Church — Assiut',
   SINCE: '١٨٧٠',
   SELLER_NAME: 'Canteen Seller',
-  CURRENCY: 'EGP',
+  CURRENCY: 'EGP',            // fallback; the displayed label comes from i18n
+
+  // ---- Behaviour -------------------------------------------------------------
+  AUTO_LOGOUT_MINUTES: 15,    // sign out automatically after this much inactivity
+  LOW_STOCK_THRESHOLD: 5,     // "low stock" badge + alert at or below this qty
 };
 
 /* SHA-256 helper — exposed globally so you can generate hashes in the console. */

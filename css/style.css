@@ -35,6 +35,12 @@
   --ease: cubic-bezier(.22, .61, .36, 1);
 }
 
+/* Arabic-first: when the page is in Arabic, Arabic faces lead everywhere. */
+html[lang="ar"] {
+  --f-ui:      'Tajawal', system-ui, sans-serif;
+  --f-display: 'El Messiri', 'Tajawal', serif;
+}
+
 /* ----------------------------------------------------------------------------
  *  Base
  * -------------------------------------------------------------------------- */
@@ -158,11 +164,12 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 }
 .login__name-en { font-family: var(--f-display); font-style: italic; color: var(--stone); font-size: 1.05rem; }
 
-.login__form { margin-top: 26px; text-align: left; }
+.login__form { margin-top: 26px; text-align: start; }
 .login__field-wrap { position: relative; }
-.login__form .field { padding-left: 2.6em; }
-.login__lock { position: absolute; left: .9em; top: 50%; transform: translateY(-50%);
+.login__form .field { padding-inline-start: 2.6em; }
+.login__lock { position: absolute; inset-inline-start: .9em; top: 50%; transform: translateY(-50%);
   color: var(--stone); width: 16px; height: 16px; }
+.login__lang { position: absolute; top: 12px; inset-inline-end: 12px; font-size: .78rem; }
 .login__submit { margin-top: 14px; }
 .login__hint { margin-top: 18px; font-size: .78rem; color: var(--stone); }
 .login__hint code { font-family: ui-monospace, monospace; color: var(--ink-soft);
@@ -206,8 +213,8 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 
 .pos__toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 18px; flex-wrap: wrap; }
 .search { position: relative; flex: 1; min-width: 200px; }
-.search .field { padding-left: 2.5em; background: var(--panel); }
-.search__icon { position: absolute; left: .85em; top: 50%; transform: translateY(-50%);
+.search .field { padding-inline-start: 2.5em; background: var(--panel); }
+.search__icon { position: absolute; inset-inline-start: .85em; top: 50%; transform: translateY(-50%);
   width: 16px; height: 16px; color: var(--stone); }
 .cat-filter { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip {
@@ -224,7 +231,7 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 }
 .card {
   background: var(--panel); border: 1px solid var(--line); border-radius: var(--r);
-  overflow: hidden; text-align: left; position: relative;
+  overflow: hidden; text-align: start; position: relative;
   transition: transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s;
   animation: cardin .4s var(--ease) both;
 }
@@ -236,7 +243,7 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 .card:hover .card__img { transform: scale(1.05); }
 .card__noimg { width: 100%; height: 100%; display: grid; place-items: center; color: var(--line-2); }
 .card__qty {
-  position: absolute; top: 8px; right: 8px; font-size: .72rem; font-weight: 700;
+  position: absolute; top: 8px; inset-inline-end: 8px; font-size: .72rem; font-weight: 700;
   padding: .25em .6em; border-radius: 999px; background: rgba(20,19,16,.82); color: #fff;
   backdrop-filter: blur(4px);
 }
@@ -256,7 +263,7 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 
 /* ---- Cart ---------------------------------------------------------------- */
 .cart {
-  background: var(--panel); border-left: 1px solid var(--line);
+  background: var(--panel); border-inline-start: 1px solid var(--line);
   display: flex; flex-direction: column; position: sticky; top: 63px;
   height: calc(100vh - 63px);
 }
@@ -274,7 +281,7 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 .citem__img { width: 46px; height: 46px; border-radius: 8px; object-fit: cover; background: var(--paper-2); }
 .citem__name { font-weight: 600; font-size: .88rem; line-height: 1.2; }
 .citem__unit { font-size: .74rem; color: var(--stone); }
-.citem__right { text-align: right; }
+.citem__right { text-align: end; }
 .citem__price { font-family: var(--f-display); font-size: 1.1rem; font-weight: 600; }
 .stepper { display: inline-flex; align-items: center; gap: 0; border: 1px solid var(--line-2);
   border-radius: 8px; overflow: hidden; margin-top: 4px; }
@@ -311,10 +318,10 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 .invoice__meta { font-size: .72rem; color: #333; display: flex; justify-content: space-between; margin: 8px 0; }
 .invoice__rule { border: 0; border-top: 1px dashed #999; margin: 6px 0; }
 .invoice table { width: 100%; border-collapse: collapse; font-size: .78rem; }
-.invoice th { text-align: left; font-size: .64rem; letter-spacing: .06em; text-transform: uppercase;
+.invoice th { text-align: start; font-size: .64rem; letter-spacing: .06em; text-transform: uppercase;
   color: #666; padding: 3px 0; border-bottom: 1px solid #000; }
 .invoice td { padding: 4px 0; vertical-align: top; }
-.invoice td.num, .invoice th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.invoice td.num, .invoice th.num { text-align: end; font-variant-numeric: tabular-nums; }
 .invoice__total { display: flex; justify-content: space-between; font-family: var(--f-display);
   font-size: 1.2rem; font-weight: 700; margin-top: 8px; padding-top: 8px; border-top: 2px solid #000; }
 .invoice__thanks { text-align: center; font-size: .72rem; color: #444; margin-top: 12px; font-style: italic; }
@@ -325,13 +332,14 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 .admin { padding: clamp(16px, 3vw, 34px); max-width: 1240px; margin: 0 auto; }
 .admin__gate { min-height: 60vh; display: grid; place-items: center; text-align: center; }
 
-.page-head { margin-bottom: 22px; }
+.page-head { margin-bottom: 22px; display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap; }
 .page-head h1 { font-family: var(--f-display); font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 600; line-height: 1; }
 .page-head .eyebrow { display: block; margin-bottom: 6px; }
 
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px; }
 .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; position: relative; overflow: hidden; }
-.kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--gold-2), var(--gold)); }
+.kpi::before { content: ''; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--gold-2), var(--gold)); }
 .kpi__label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); font-weight: 700; }
 .kpi__value { font-family: var(--f-display); font-size: 2.4rem; font-weight: 600; line-height: 1.1; margin-top: 4px; font-variant-numeric: tabular-nums; }
 .kpi__value small { font-size: .5em; color: var(--stone); font-family: var(--f-ui); }
@@ -347,13 +355,14 @@ body.is-leaving .login { opacity: 0; filter: blur(3px); }
 .table-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin-bottom: 24px; }
 .table-scroll { overflow-x: auto; }
 table.data { width: 100%; border-collapse: collapse; font-size: .86rem; }
-table.data th { text-align: left; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+table.data th { text-align: start; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
   color: var(--stone); font-weight: 700; padding: 12px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; background: var(--paper); }
 table.data td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
 table.data tr:last-child td { border-bottom: 0; }
 table.data tbody tr { transition: background .12s; }
 table.data tbody tr:hover { background: var(--paper); }
-table.data td.num, table.data th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.data td.num, table.data th.num { text-align: end; font-variant-numeric: tabular-nums; }
+table.data tr.is-refunded td { opacity: .72; background: var(--danger-bg); }
 .thumb { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: var(--paper-2); }
 .badge { display: inline-block; font-size: .7rem; font-weight: 700; padding: .2em .6em; border-radius: 999px; }
 .badge--cat { background: var(--paper-2); color: var(--ink-soft); }
@@ -425,15 +434,15 @@ table.data td.num, table.data th.num { text-align: right; font-variant-numeric: 
 @media (max-width: 780px) {
   .pos { grid-template-columns: 1fr; }
   .cart {
-    position: fixed; inset: auto 0 0 0; height: min(82vh, 620px); border-left: 0;
+    position: fixed; inset: auto 0 0 0; height: min(82vh, 620px); border-inline-start: 0;
     border-top: 1px solid var(--line); border-radius: 20px 20px 0 0; box-shadow: var(--shadow-lg);
     z-index: 60; transform: translateY(100%); transition: transform .32s var(--ease);
   }
   .cart.is-open { transform: none; }
   .cart__grab { width: 40px; height: 4px; background: var(--line-2); border-radius: 999px; margin: 8px auto 0; }
-  .cart__close { position: absolute; top: 12px; right: 14px; }
+  .cart__close { position: absolute; top: 12px; inset-inline-end: 14px; }
   .cart-fab {
-    display: flex; align-items: center; gap: 10px; position: fixed; right: 16px; bottom: 16px; z-index: 55;
+    display: flex; align-items: center; gap: 10px; position: fixed; inset-inline-end: 16px; bottom: 16px; z-index: 55;
     padding: .8em 1.2em; border-radius: 999px; background: var(--ink); color: var(--paper);
     box-shadow: var(--shadow-lg); font-weight: 700; font-size: .9rem;
   }
@@ -465,6 +474,20 @@ table.data td.num, table.data th.num { text-align: right; font-variant-numeric: 
   .modal { box-shadow: none; border: 0; }
   .no-print { display: none !important; }
 }
+
+/* ============================================================================
+ *  ARABIC TYPOGRAPHY
+ *  Wide letter-spacing breaks Arabic ligatures — neutralise it in Arabic.
+ * ========================================================================== */
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .modal-eyebrow,
+html[lang="ar"] .topbar__titles .sub,
+html[lang="ar"] label.lbl,
+html[lang="ar"] table.data th,
+html[lang="ar"] .kpi__label,
+html[lang="ar"] .card__cat,
+html[lang="ar"] .cart__total .lbl2,
+html[lang="ar"] .invoice__sub { letter-spacing: 0; }
 
 /* ============================================================================
  *  MOTION PREFERENCES

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>POS · Canteen</title>
+  <title>نقطة البيع · الكانتين</title>
   <meta name="theme-color" content="#fbfaf6" />
   <link rel="icon" href="assets/emblem.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,14 +26,15 @@
       </span>
       <div class="topbar__titles">
         <div class="name" data-brand-ar>الكنيسة الإنجيلية الأولى في أسيوط</div>
-        <div class="sub">Canteen · Point of Sale</div>
+        <div class="sub" data-i18n="pos_sub">الكانتين · نقطة البيع</div>
       </div>
     </div>
     <div class="topbar__spacer"></div>
     <nav class="topbar__nav">
-      <a class="navlink is-active" href="seller.html">POS</a>
-      <a class="navlink" href="admin.html"><span>Admin</span></a>
-      <button class="navlink" id="logout-btn" type="button">Sign out</button>
+      <a class="navlink is-active" href="seller.html" data-i18n="nav_pos">نقطة البيع</a>
+      <a class="navlink" href="admin.html"><span data-i18n="nav_admin">الإدارة</span></a>
+      <button class="navlink lang-toggle" type="button">English</button>
+      <button class="navlink" id="logout-btn" type="button" data-i18n="sign_out">تسجيل الخروج</button>
     </nav>
   </header>
 
@@ -45,7 +46,8 @@
           <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
           </svg>
-          <input class="field" id="search" type="search" placeholder="Search products or code…" aria-label="Search products" />
+          <input class="field" id="search" type="search" placeholder="ابحث عن منتج أو كود…"
+                 data-i18n-placeholder="search_placeholder" aria-label="Search products" />
         </div>
       </div>
       <div class="cat-filter" id="cat-filter"></div>
@@ -57,20 +59,20 @@
       <div class="cart__grab" aria-hidden="true"></div>
       <button class="btn btn--icon btn--ghost cart__close" id="cart-close" type="button" aria-label="Close cart">✕</button>
       <div class="cart__head">
-        <span class="eyebrow">Current order</span>
-        <h2>The Tray</h2>
+        <span class="eyebrow" data-i18n="current_order">الطلب الحالي</span>
+        <h2 data-i18n="tray_title">السلة</h2>
       </div>
       <div class="cart__items" id="cart-items">
-        <p class="cart__empty">No items yet. Tap a product to begin.</p>
+        <p class="cart__empty" data-i18n="no_items">لا توجد أصناف بعد. اضغط على منتج للبدء.</p>
       </div>
       <div class="cart__foot">
         <div class="cart__total">
-          <span class="lbl2">Total</span>
-          <span class="val" id="cart-total">0.00 EGP</span>
+          <span class="lbl2" data-i18n="total">الإجمالي</span>
+          <span class="val" id="cart-total">0.00</span>
         </div>
         <div class="cart__actions">
-          <button class="btn btn--ghost" id="cart-clear" type="button" aria-label="Clear cart">Clear</button>
-          <button class="btn btn--gold" id="checkout-btn" type="button">Complete sale</button>
+          <button class="btn btn--ghost" id="cart-clear" type="button" data-i18n="clear">تفريغ</button>
+          <button class="btn btn--gold" id="checkout-btn" type="button" data-i18n="complete_sale">إتمام البيع</button>
         </div>
       </div>
     </aside>
@@ -79,7 +81,7 @@
   <!-- Mobile cart button -->
   <button class="cart-fab" id="cart-fab" type="button">
     <span class="cart-fab__count" id="fab-count">0</span>
-    <span>View tray</span>
+    <span data-i18n="view_tray">عرض السلة</span>
     <span class="cart-fab__total" id="fab-total">0.00</span>
   </button>
 
@@ -89,6 +91,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/env.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/cloudinary.js"></script>
   <script src="js/app.js"></script>

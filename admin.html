@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Admin · Canteen</title>
+  <title>الإدارة · الكانتين</title>
   <meta name="theme-color" content="#fbfaf6" />
   <link rel="icon" href="assets/emblem.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,57 +25,61 @@
       </span>
       <div class="topbar__titles">
         <div class="name" data-brand-ar>الكنيسة الإنجيلية الأولى في أسيوط</div>
-        <div class="sub">Canteen · Administration</div>
+        <div class="sub" data-i18n="admin_sub">الكانتين · لوحة الإدارة</div>
       </div>
     </div>
     <div class="topbar__spacer"></div>
     <nav class="topbar__nav">
-      <a class="navlink" href="seller.html">POS</a>
-      <a class="navlink is-active" href="admin.html">Admin</a>
-      <button class="navlink" id="logout-btn" type="button">Sign out</button>
+      <a class="navlink" href="seller.html" data-i18n="nav_pos">نقطة البيع</a>
+      <a class="navlink is-active" href="admin.html" data-i18n="nav_admin">الإدارة</a>
+      <button class="navlink lang-toggle" type="button">English</button>
+      <button class="navlink" id="logout-btn" type="button" data-i18n="sign_out">تسجيل الخروج</button>
     </nav>
   </header>
 
   <!-- Gate shown until admin password verified -->
   <div class="admin__gate" id="gate" hidden>
     <div>
-      <span class="eyebrow">Restricted</span>
-      <h1 class="page-head" style="font-family:var(--f-display);font-size:2.2rem">Admin verification required</h1>
-      <button class="btn btn--gold" id="gate-btn" type="button">Enter admin password</button>
+      <span class="eyebrow" data-i18n="restricted">منطقة محظورة</span>
+      <h1 class="page-head" style="font-family:var(--f-display);font-size:2.2rem" data-i18n="admin_verification">مطلوب التحقق من المشرف</h1>
+      <button class="btn btn--gold" id="gate-btn" type="button" data-i18n="enter_admin_password">أدخل كلمة مرور المشرف</button>
     </div>
   </div>
 
   <!-- Dashboard -->
   <main class="admin" id="dashboard" hidden>
     <div class="page-head">
-      <span class="eyebrow">Overview</span>
-      <h1>The Ledger</h1>
+      <div>
+        <span class="eyebrow" data-i18n="overview">نظرة عامة</span>
+        <h1 data-i18n="ledger_title">السجل</h1>
+      </div>
+      <button class="btn btn--gold" id="close-day-btn" type="button" data-i18n="close_day">إغلاق اليوم</button>
     </div>
 
     <section class="kpis" id="kpis"></section>
 
     <section class="panels">
       <div class="panel">
-        <h3>Sales · last 14 days</h3>
+        <h3 data-i18n="sales_14">المبيعات · آخر ١٤ يومًا</h3>
         <div class="panel__chart"><canvas id="chart-daily"></canvas></div>
       </div>
       <div class="panel">
-        <h3>Top sellers</h3>
+        <h3 data-i18n="top_sellers">الأكثر مبيعًا</h3>
         <div class="panel__chart"><canvas id="chart-top"></canvas></div>
       </div>
     </section>
 
     <section>
       <div class="section-head">
-        <h3>Products</h3>
-        <button class="btn btn--gold btn--sm" id="add-product-btn" type="button">+ Add product</button>
+        <h3 data-i18n="products">المنتجات</h3>
+        <button class="btn btn--gold btn--sm" id="add-product-btn" type="button" data-i18n="add_product">+ إضافة منتج</button>
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
           <table class="data" id="products-table">
             <thead><tr>
-              <th></th><th>Name</th><th>Code</th><th>Category</th>
-              <th class="num">Price</th><th class="num">Stock</th><th class="num">Actions</th>
+              <th></th><th data-i18n="name">الاسم</th><th data-i18n="code">الكود</th><th data-i18n="category">الفئة</th>
+              <th class="num" data-i18n="price_th">السعر</th><th class="num" data-i18n="stock">المخزون</th><th class="num" data-i18n="actions">إجراءات</th>
             </tr></thead>
             <tbody></tbody>
           </table>
@@ -84,12 +88,45 @@
     </section>
 
     <section>
-      <div class="section-head"><h3>Sales history</h3></div>
+      <div class="section-head"><h3 data-i18n="sales_history">سجل المبيعات</h3></div>
       <div class="table-wrap">
         <div class="table-scroll">
           <table class="data" id="sales-table">
             <thead><tr>
-              <th>Order</th><th>Date &amp; time</th><th>Items</th><th>Seller</th><th class="num">Total</th>
+              <th data-i18n="order">الطلب</th><th data-i18n="datetime">التاريخ والوقت</th><th data-i18n="items">الأصناف</th>
+              <th data-i18n="seller">البائع</th><th data-i18n="status">الحالة</th>
+              <th class="num" data-i18n="total_th">الإجمالي</th><th class="num" data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h3 data-i18n="daily_reports">تقارير الإغلاق اليومي</h3></div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="data" id="reports-table">
+            <thead><tr>
+              <th data-i18n="date">التاريخ</th><th class="num" data-i18n="orders_count">الطلبات</th>
+              <th class="num" data-i18n="expected">المتوقع</th><th class="num" data-i18n="actual">الفعلي</th>
+              <th class="num" data-i18n="difference">الفرق</th><th data-i18n="closed_by">أغلقه</th><th data-i18n="notes">ملاحظات</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h3 data-i18n="audit_log">سجل التدقيق</h3></div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="data" id="logs-table">
+            <thead><tr>
+              <th data-i18n="time">الوقت</th><th data-i18n="user">المستخدم</th>
+              <th data-i18n="action">الإجراء</th><th data-i18n="details">التفاصيل</th>
             </tr></thead>
             <tbody></tbody>
           </table>
@@ -102,6 +139,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <script src="js/env.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/cloudinary.js"></script>
   <script src="js/app.js"></script>

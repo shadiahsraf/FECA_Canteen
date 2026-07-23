@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Canteen · First Evangelical Church, Assiut</title>
+  <title>الكانتين · الكنيسة الإنجيلية الأولى في أسيوط</title>
   <meta name="theme-color" content="#fbfaf6" />
   <link rel="icon" href="assets/emblem.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,6 +14,7 @@
 <body>
   <main class="login">
     <div class="login__card">
+      <button class="navlink lang-toggle login__lang" type="button">English</button>
       <div class="login__emblem">
         <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg" fill="none"
              stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -35,21 +36,23 @@
       <p class="login__name-en" data-brand-en>First Evangelical Church — Assiut</p>
 
       <form class="login__form" id="login-form" autocomplete="off" novalidate>
-        <span class="eyebrow" style="display:block;margin-bottom:8px">Canteen access</span>
+        <span class="eyebrow" style="display:block;margin-bottom:8px" data-i18n="canteen_access">الدخول إلى الكانتين</span>
         <div class="login__field-wrap">
           <svg class="login__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>
           </svg>
-          <input class="field" id="login-password" type="password" placeholder="Enter password" aria-label="Password" required />
+          <input class="field" id="login-password" type="password" placeholder="أدخل كلمة المرور"
+                 data-i18n-placeholder="password_placeholder" aria-label="Password" required />
         </div>
         <p class="field-error" id="login-error"></p>
-        <button class="btn btn--gold btn--block login__submit" type="submit">Enter the canteen</button>
+        <button class="btn btn--gold btn--block login__submit" type="submit" data-i18n="enter_btn">دخول الكانتين</button>
       </form>
     </div>
   </main>
 
   <script src="js/env.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
